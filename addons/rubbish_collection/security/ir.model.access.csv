@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+"access_collection_volunteer_all","access_collection_volunteer users","rubbish_collection.model_collection_volunteer",,1,1,0,0
+"access_collection_volunteer_administrator","access_collection_volunteer","rubbish_collection.model_collection_volunteer",rubbish_collection.group_collection_administrator,1,1,1,1
+"access_collection_logs","access_collection_logs","rubbish_collection.model_collection_logs",rubbish_collection.group_collection_volunteer,1,1,1,1

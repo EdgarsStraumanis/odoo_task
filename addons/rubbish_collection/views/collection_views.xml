@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    <record model="ir.actions.act_window"-->
+<!--            id="action_rubbish_collection">-->
+<!--        <field name="name">Rubbish</field>-->
+<!--        <field name="res_model">collection.rubbish</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--    </record>-->
+    <record id="view_collection_logs_tree" model="ir.ui.view">
+        <field name="name">collection.logs.tree</field>
+        <field name="model">collection.logs</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="volunteer_id" groups="rubbish_collection.group_collection_administrator"/>
+                <field name="date"/>
+                <field name="type"/>
+                <field name="weight"/>
+                <field name="volume"/>
+                <field name="density" readonly="True"/>
+            </tree>
+<!--            <tree groups="rubbish_collection.group_collection_administrator">-->
+<!--                <field name="volunteer_id"/>-->
+<!--                <field name="date"/>-->
+<!--                <field name="type"/>-->
+<!--                <field name="weight"/>-->
+<!--                <field name="volume"/>-->
+<!--            </tree>-->
+<!--            <tree groups="rubbish_collection.group_collection_volunteer">-->
+<!--                <field name="date"/>-->
+<!--                <field name="type"/>-->
+<!--                <field name="weight"/>-->
+<!--                <field name="volume"/>-->
+<!--            </tree>-->
+        </field>
+    </record>
+
+
+    <record id="view_collection_logs_form" model="ir.ui.view">
+        <field name="name">collection.logs.form</field>
+        <field name="model">collection.logs</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="volunteer_id"/>
+                            <field name="date" label="Date"/>
+                        </group>
+                        <group>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="weight"/>
+                            <field name="volume"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="action_collection_logs">
+        <field name="name">Logs</field>
+        <field name="res_model">collection.logs</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!--    <record model="ir.actions.act_window" id="action_collection_logs">-->
+<!--        <field name="name">Logs</field>-->
+<!--        <field name="res_model">collection.logs</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--    </record>-->
+
+    <menuitem name="Rubbish Collection"
+              id="collection_root_menu"
+
+              web_icon="rubbish_collection,static/description/icon.png"/>
+
+<!--    <menuitem name="Rubbish" id="collection_rubbish_menu"-->
+<!--              parent="collection_root_menu"-->
+<!--              action="action_rubbish_collection"-->
+<!--              sequence="1"/>-->
+
+    <menuitem name="Collection logs" id="collection_logs_menu"
+              parent="collection_root_menu"
+              action="action_collection_logs"
+              sequence="1"/>
+</odoo>

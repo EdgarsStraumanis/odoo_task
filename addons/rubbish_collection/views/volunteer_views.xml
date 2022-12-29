@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_collection_volunteer_tree" model="ir.ui.view">
+        <field name="name">collection.volunteer.tree</field>
+        <field name="model">collection.volunteer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id" groups="rubbish_collection.group_collection_administrator"/>
+                <field name="firstName"/>
+                <field name="lastName"/>
+                <field name="birth" groups="rubbish_collection.group_collection_administrator" widget="integer" options="{'format': 0}"/>
+                <field name="email"/>
+                <field name="mobileNumber" groups="rubbish_collection.group_collection_administrator"/>
+            </tree>
+<!--            <tree groups="rubbish_collection.group_collection_administrator">-->
+<!--                <field name="firstName"/>-->
+<!--                <field name="lastName"/>-->
+<!--                <field name="birth"/>-->
+<!--                <field name="email"/>-->
+<!--                <field name="mobileNumber"/>-->
+<!--            </tree>-->
+<!--            <tree groups="rubbish_collection.group_collection_volunteer">-->
+<!--                <field name="firstName"/>-->
+<!--                <field name="lastName"/>-->
+<!--                <field name="email"/>-->
+<!--            </tree>-->
+        </field>
+    </record>
+
+    <record id="view_collection_volunteer_form" model="ir.ui.view">
+        <field name="name">collection.volunteer.form</field>
+        <field name="model">collection.volunteer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="firstName"/>
+                            <field name="lastName"/>
+                            <field name="birth" widget="integer" options="{'format': 0}"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="mobileNumber"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="photo"/>
+                            <field name="memo"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_collection_volunteer">
+        <field name="name">Volunteer</field>
+        <field name="res_model">collection.volunteer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Volunteer" id="collection_volunteer_menu"
+              parent="collection_root_menu"
+              action="action_collection_volunteer"
+              sequence="1"/>
+</odoo>
